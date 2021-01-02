@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package kata3;
+package main;
 
+import java.awt.Dimension;
 import javax.swing.JPanel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -13,30 +9,28 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.ApplicationFrame;
 
-/**
- *
- * @author Chris
- */
-public class HistogramDisplay extends ApplicationFrame{
+public class HistogramDisplay extends ApplicationFrame {
+
+    public HistogramDisplay() {
+        super("HISTOGRAMA");
+        setContentPane(createPanel());
+        pack();
+    }
     
-    private final Histogram<String> histogram;
-    
-    public HistogramDisplay(String title, Histogram<String> histogram) {
-        super(title);
-        this.histogram = histogram;
-        this.setContentPane(createPanel());
-        this.pack();
+    public void execute(){
+        setVisible(true);
     }
     
     private JPanel createPanel(){
         ChartPanel chartPanel = new ChartPanel(createChart(createDataset()));
+        chartPanel.setPreferredSize(new Dimension(500,400));
         return chartPanel;
     }
     
     private JFreeChart createChart(DefaultCategoryDataset dataSet){
-        JFreeChart chart = ChartFactory.createBarChart("JFree Histogram",
+        JFreeChart chart = ChartFactory.createBarChart("Histograma JFreeChart", 
                                                        "Dominios email", 
-                                                       "Nº emails", 
+                                                       "Nº de emails", 
                                                        dataSet, 
                                                        PlotOrientation.VERTICAL, 
                                                        false, 
@@ -45,18 +39,12 @@ public class HistogramDisplay extends ApplicationFrame{
         return chart;
     }
     
-    private DefaultCategoryDataset createDataset(){
+    public DefaultCategoryDataset createDataset(){
         DefaultCategoryDataset dataSet = new DefaultCategoryDataset();
-        
-        for (String key : histogram.keySet()){
-            dataSet.addValue(histogram.get(key), "", key);
-        }
-        
+        dataSet.addValue(3, "", "ulpgc.es");
+        dataSet.addValue(5, "", "gmail.com");
+        dataSet.addValue(2, "", "outlook.com");
+        dataSet.addValue(1, "", "alu.ulpgc.es");
         return dataSet;
-    }
-    
-    public void execute(){
-        this.setVisible(true);
-        
     }
 }

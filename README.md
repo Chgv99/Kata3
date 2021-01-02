@@ -1,12 +1,9 @@
-# Kata 1
+# Kata 3
 
-Código que calcula la edad a partir de la fecha de nacimiento.
+Código que crea y muestra un histograma de dominios de correo electrónico
 
 ### Versión 1
-Se usa la clase *java.utils.Date* (obsoleta).
+En esta primera versión, el código consiste de dos clases, la principal y la clase HistogramDisplay, que se encarga tanto de crear el histograma como de mostrarlo.
 
 ### Versión 2
-En este caso se usan *Calendar* y *GregorianCalendar*.
-
-### Versión 3
-Finalmente, usamos la clase *LocalDate*
+En esta versión se añade la clase Histogram, para que la clase HistogramDisplay no tenga que crear el histograma en sí
